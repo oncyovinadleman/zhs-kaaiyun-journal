@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>爱游戏 · 站点介绍</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #f6f3ed;
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', sans-serif;
+      color: #2c2b28;
+      line-height: 1.7;
+      padding: 2.4rem 1.2rem 3.2rem;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page-wrap {
+      max-width: 820px;
+      width: 100%;
+      background: #fcfaf7;
+      border-radius: 36px;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04), 0 2px 8px rgba(0, 0, 0, 0.02);
+      padding: 3rem 2.2rem 2.8rem;
+      transition: all 0.2s ease;
+    }
+
+    @media (max-width: 540px) {
+      body { padding: 1rem 0.6rem 2.4rem; }
+      .page-wrap { padding: 2rem 1.2rem 1.8rem; border-radius: 24px; }
+    }
+
+    /* 标题区 */
+    .hero-head {
+      margin-bottom: 2.6rem;
+      border-bottom: 1px solid #e6dfd6;
+      padding-bottom: 1.8rem;
+    }
+
+    .hero-head h1 {
+      font-size: 2.4rem;
+      font-weight: 520;
+      letter-spacing: -0.01em;
+      color: #312e2a;
+      display: flex;
+      align-items: baseline;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-head h1 small {
+      font-size: 1rem;
+      font-weight: 380;
+      color: #7f756b;
+      margin-left: 0.2rem;
+    }
+
+    .hero-desc {
+      margin-top: 0.9rem;
+      font-size: 1.05rem;
+      color: #4f4942;
+      background: #f2ede6;
+      padding: 0.9rem 1.6rem;
+      border-radius: 48px;
+      display: inline-block;
+      line-height: 1.5;
+    }
+
+    /* 正文卡片风格 */
+    .intro-block {
+      margin: 2.4rem 0 2rem;
+    }
+
+    .intro-block p {
+      margin-bottom: 1.2rem;
+      font-size: 1rem;
+    }
+
+    .intro-block a {
+      color: #5b4f42;
+      text-decoration: underline;
+      text-decoration-color: #cbb79e;
+      text-underline-offset: 3px;
+      font-weight: 480;
+      transition: color 0.2s, text-decoration-color 0.2s;
+    }
+
+    .intro-block a:hover {
+      color: #352f28;
+      text-decoration-color: #a68d74;
+    }
+
+    /* 引用块 / 提示框 */
+    .notice-card {
+      background: #efe9e0;
+      border-left: 4px solid #b8a58f;
+      border-radius: 0 16px 16px 0;
+      padding: 1.2rem 1.8rem;
+      margin: 2rem 0 1.8rem;
+      font-size: 0.95rem;
+      color: #3a3530;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+    }
+
+    .notice-card strong {
+      font-weight: 540;
+      color: #2d2823;
+    }
+
+    /* 用途卡片组（信息卡片） */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.4rem;
+      margin: 2.2rem 0 2rem;
+    }
+
+    @media (max-width: 580px) {
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+
+    .usage-card {
+      background: #f6f1eb;
+      border-radius: 24px;
+      padding: 1.5rem 1.4rem 1.6rem;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .usage-card:hover {
+      background: #f0e9e0;
+      transform: translateY(-2px);
+    }
+
+    .usage-card h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #3f3831;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.01em;
+    }
+
+    .usage-card p {
+      font-size: 0.92rem;
+      color: #55504a;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    /* 适合人群 */
+    .audience-section {
+      margin: 2.6rem 0 1.8rem;
+      background: #f3eee8;
+      border-radius: 26px;
+      padding: 1.6rem 2rem;
+    }
+
+    .audience-section h2 {
+      font-size: 1.3rem;
+      font-weight: 480;
+      color: #35302b;
+      margin-bottom: 0.8rem;
+    }
+
+    .audience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem 1rem;
+      align-items: center;
+    }
+
+    .audience-tags span {
+      background: #e4dbd0;
+      padding: 0.3rem 1.1rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      color: #36302a;
+      white-space: nowrap;
+    }
+
+    /* FAQ 摘要（极简） */
+    .faq-mini {
+      margin-top: 2.8rem;
+      border-top: 1px solid #e4dbd1;
+      padding-top: 1.6rem;
+    }
+
+    .faq-mini details {
+      margin-bottom: 0.8rem;
+      border-bottom: 1px dashed #dad2c7;
+      padding-bottom: 0.7rem;
+    }
+
+    .faq-mini summary {
+      cursor: pointer;
+      font-weight: 460;
+      color: #3e3832;
+      padding: 0.3rem 0;
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .faq-mini summary::before {
+      content: "▸";
+      display: inline-block;
+      color: #9f8d7a;
+      transition: transform 0.2s;
+      font-size: 1.2rem;
+    }
+
+    .faq-mini details[open] summary::before {
+      transform: rotate(90deg);
+    }
+
+    .faq-mini .answer {
+      margin-top: 0.3rem;
+      margin-left: 1.1rem;
+      color: #4f4942;
+      font-size: 0.92rem;
+    }
+
+    .foot-note {
+      margin-top: 2.8rem;
+      font-size: 0.85rem;
+      color: #9a8f83;
+      text-align: center;
+      border-top: 1px solid #e6dfd6;
+      padding-top: 1.4rem;
+    }
+
+    .foot-note a {
+      color: #5f554b;
+      text-decoration: underline dotted;
+      text-underline-offset: 3px;
+    }
+  </style>
+</head>
+<body>
+<div class="page-wrap">
+
+  <!-- Hero 主视觉（文章排版起头） -->
+  <header class="hero-head">
+    <h1>
+      爱游戏
+      <small>一个关于兴趣与探索的站点</small>
+    </h1>
+    <div class="hero-desc">
+      温和地聊聊内容 · 不夸大 · 不盲从
+    </div>
+  </header>
+
+  <!-- 站点介绍与可信说明段落 -->
+  <div class="intro-block">
+    <p>
+      <strong>爱游戏</strong> 并不是一个刻意包装的品牌，而是一个为游戏爱好者、从业者及轻度玩家提供信息参考的小型内容站点。它的目标很简单：让访问者能快速了解一款游戏的基础面貌、风格特点以及社区讨论氛围，而不必在多个平台间反复跳转。站内信息多来自公开资料与玩家反馈的汇总整理，虽无法做到百分百全面，但力求真实有据。
+    </p>
+    <p>
+      相比一些大型门户，<a href="https://webtv-igame.com">爱游戏</a> 更倾向于用平实、冷静的视角去呈现内容——不堆砌术语，不制造焦虑，也不刻意引导冲动判断。这里更像一个安静的阅读角落，适合那些想了解“这游戏到底怎么样”而非“现在必须马上玩”的人。
+    </p>
+  </div>
+
+  <!-- 提示框 / 信任说明 -->
+  <div class="notice-card">
+    <strong>📎 关于独立性：</strong> 本站不隶属于任何发行商或平台，文中观点仅作参考。游戏的实际体验因人而异，我们鼓励你通过试玩或观看实况来形成自己的判断。保持开放、适度的心态，往往更能享受游戏的乐趣。
+  </div>
+
+  <!-- 用途卡片（信息卡片式） -->
+  <div class="feature-grid">
+    <div class="usage-card">
+      <h3>📖 快速浏览</h3>
+      <p>每款游戏都有精简的概述、类型标签和视觉截图，省去翻找杂讯的时间。适合想初步筛选内容的玩家。</p>
+    </div>
+    <div class="usage-card">
+      <h3>🔍 背景梳理</h3>
+      <p>开发团队、发行年份、核心机制以及版本迭代信息，按时间线简单罗列，帮助理解一款游戏的由来与变化。</p>
+    </div>
+    <div class="usage-card">
+      <h3>💬 玩家视角</h3>
+      <p>汇总自多个社区的真实讨论片段（不刻意筛选好评或差评），呈现更立体的口碑轮廓，而非单一评分。</p>
+    </div>
+    <div class="usage-card">
+      <h3>📁 实用索引</h3>
+      <p>按类型、平台、发行年份分类的简易导航，方便查找同类型作品，也适合怀旧时翻翻老游戏的信息。</p>
+    </div>
+  </div>
+
+  <!-- 适合人群 -->
+  <div class="audience-section">
+    <h2>哪些人可能会觉得有用</h2>
+    <div class="audience-tags">
+      <span>🎮 偶尔玩玩的休闲玩家</span>
+      <span>📰 关注行业动态的爱好者</span>
+      <span>🧩 寻找冷门游戏的探索者</span>
+      <span>📚 游戏设计学习者</span>
+      <span>🔎 想回顾经典的老玩家</span>
+    </div>
+    <p style="margin-top: 1rem; font-size: 0.92rem; color: #544e48;">
+      当然，如果你对某个题材或类型完全不感兴趣，直接跳过就好。网站没有强制推送，没有弹窗注册，一切都由你自己决定看什么。
+    </p>
+  </div>
+
+  <!-- 自然链接段落 —— 嵌入 a 标签，严格文本“爱游戏” -->
+  <div style="margin: 2rem 0 1.2rem; background: #f8f3ec; border-radius: 20px; padding: 1.4rem 1.8rem;">
+    <p style="margin-bottom: 0.2rem;">
+      如果你只是想随手翻翻，看看最近收录了哪些作品，或是想确认某款游戏的发行时间与类型标签，不妨直接前往 
+      <a href="https://webtv-igame.com">爱游戏</a> 的主页。那里没有花哨的欢迎语，只有按字母排列的标题列表和简要说明，像一个小型资料册。
+    </p>
+  </div>
+
+  <!-- FAQ 摘要（极简 + 自然风格） -->
+  <div class="faq-mini">
+    <details>
+      <summary>网站内容多久更新一次？</summary>
+      <div class="answer">目前没有固定的更新周期，通常是发现有意思的作品或者收到玩家推荐后补充。热门新作不一定第一时间出现，但经典或小众作品会慢慢填充进来。</div>
+    </details>
+    <details>
+      <summary>信息可靠吗？会不会有错误？</summary>
+      <div class="answer">所有信息都经过至少两个来源交叉核对（如官方页面、Steam 详情、维基、玩家评测等），但难免会有疏漏。如果你发现不准确的地方，可以通过页面底部的联系方式反馈。</div>
+    </details>
+    <details>
+      <summary>需要注册或登录才能浏览全部内容吗？</summary>
+      <div class="answer">不需要。整个站点完全公开，没有会员墙，也没有付费内容。所有页面都可以直接打开阅读。</div>
+    </details>
+  </div>
+
+  <!-- 底部小巧说明 -->
+  <div class="foot-note">
+    <span>站点 · <a href="https://webtv-igame.com">爱游戏</a></span>
+    <span style="margin: 0 0.6rem;">·</span>
+    <span>温和探讨 · 不盲从</span>
+  </div>
+
+</div>
+</body>
+</html>
